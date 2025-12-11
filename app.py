@@ -29,27 +29,27 @@ st.title("IMovie – Marketing Strategy Dashboard for Dec 2025")
 # -----------------------------------------------------
 # LOAD & CLEAN DATA
 # -----------------------------------------------------
-df = load_data("data/Film_Dataset.csv")
-df = clean_data(df)
-
+df = load_data("data/Film_Dataset_Cleaned.csv")
+# df = clean_data(df)#
+#
 
 # Ensure Release_Date is datetime
-df['Release_Date'] = pd.to_datetime(df['Release_Date'])
+# df['Release_Date'] = pd.to_datetime(df['Release_Date'])#
 
 # Current date (today)
-today = pd.Timestamp.today()
+# today = pd.Timestamp.today()#
 
 # Days since release
-df['days_since_release'] = (today - df['Release_Date']).dt.days
+# df['days_since_release'] = (today - df['Release_Date']).dt.days#
 
 # Convert to months (approximate: 30 days per month)
-df['months_since_release'] = df['days_since_release'] / 30
+# df['months_since_release'] = df['days_since_release'] / 30#
 
 # Replace 0 months with 1 to avoid division by zero
-df['months_since_release'] = df['months_since_release'].replace(0, 1)
+# df['months_since_release'] = df['months_since_release'].replace(0, 1)#
 
 # Trending score
-df['trending_score'] = df['Number_of_Views'] / df['months_since_release']
+# df['trending_score'] = df['Number_of_Views'] / df['months_since_release']
 
 # display in streamlit
 st.header(" Trending Movies (Fastest Growing)")
@@ -84,28 +84,6 @@ fig1 = px.bar(cat_df, x="Category", y="Number_of_Views",
 st.plotly_chart(fig1, use_container_width=True)
 
 
-# -----------------------------------------------------
-# MONTHLY TREND
-# -----------------------------------------------------
-st.header(" Monthly Viewing Trend")
-monthly_df = get_monthly_views(df)
-
-fig2 = px.line(monthly_df, x="Viewing_Month", y="Number_of_Views",
-               markers=True,
-               title="Viewing Trend Over Time")
-
-st.plotly_chart(fig2, use_container_width=True)
-
-
-# -----------------------------------------------------
-# TOP MOVIES
-# -----------------------------------------------------
-st.header(" Top 5 Most Watched Movies")
-top_movies = get_top_movies(df)
-
-st.dataframe(top_movies)
-
-
 def show_interactive_pie(df, column):
     # Count values
     data = df[column].value_counts().reset_index()
@@ -132,16 +110,38 @@ def show_interactive_pie(df, column):
 
 
 # -----------------------------------------------------
-# INTERACTIVE PIE CHART
+#  PIE CHART
 # -----------------------------------------------------
-st.header("Interactive Pie Chart")
+st.header("Chart based on the category/language/viewer rate")
 
 column_option = st.selectbox(
     "Choose a column for the pie chart:",
-    ["Category", "Language"]   # add more if needed
+    ["Category", "Language", "Viewer_Rate"]
 )
 
 show_interactive_pie(df, column_option)
+
+
+# -----------------------------------------------------
+# MONTHLY TREND
+# -----------------------------------------------------
+st.header(" Monthly Viewing Trend")
+monthly_df = get_monthly_views(df)
+
+fig2 = px.line(monthly_df, x="Viewing_Month", y="Number_of_Views",
+               markers=True,
+               title="Viewing Trend Over Time")
+
+st.plotly_chart(fig2, use_container_width=True)
+
+
+# -----------------------------------------------------
+# TOP MOVIES
+# -----------------------------------------------------
+st.header(" Top 5 Most Watched Movies")
+top_movies = get_top_movies(df)
+
+st.dataframe(top_movies)
 
 
 # -----------------------------------------------------
