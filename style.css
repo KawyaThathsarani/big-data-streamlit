@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif !important;
+}
+
+div[data-testid="stMarkdownContainer"] h1,
+div[data-testid="stMarkdownContainer"] h2,
+div[data-testid="stMarkdownContainer"] h3 {
+  font-family: "Inter", sans-serif !important;
+}
+
+h1 {
+  margin-bottom: 24px !important;
+}
+
+h2 {
+  color: #ced6e9 !important;
+}
+
+.metric-card {
+  background-color: #f0f2f6;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+div[data-testid="metric-container"]:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.4), 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+div[data-testid="metric-container"] > label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  opacity: 0.95 !important;
+}
+
+div[data-testid="metric-container"] > div {
+  color: #ffffff !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+}
+
+div[data-testid="metric-container"] > div > div {
+  color: #ffffff !important;
+}
+
+div[data-testid="stMetricDelta"] {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+div[class*="stMetric"] {
+  background: linear-gradient(145deg, #192136 0%, #192136 100%);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+div[class*="stMetric"] label {
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
