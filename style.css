@@ -1,0 +1,30 @@
+.metric-card {
+  background-color: #f0f2f6;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+div[data-testid="metric-container"] {
+  background-color: #1e3a8a;
+  border: 2px solid #3b82f6;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+div[data-testid="metric-container"] > label {
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+div[data-testid="metric-container"] > div {
+  color: #ffffff !important;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+div[data-testid="stMetricDelta"] {
+  color: #ffffff !important;
+}
