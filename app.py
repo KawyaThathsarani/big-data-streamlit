@@ -136,9 +136,8 @@ top_category = df_filtered.groupby('Category')['Number_of_Views'].sum().idxmax()
 
 # December performance rank
 monthly_views = df.groupby(df['Viewing_Month'].dt.month)['Number_of_Views'].sum().sort_values(ascending=False)
-december_rank = (monthly_views.rank(ascending=False).get(12, 0))
 
-col1, col2, col3, col4, col5, col6 = st.columns(6)
+col1, col2, col3, col4, col5, = st.columns(5)
 
 with col1:
     st.metric("Total Films", f"{total_films:,}")
@@ -150,8 +149,6 @@ with col4:
     st.metric("Top Language", most_viewed_lang)
 with col5:
     st.metric("Top Category", top_category)
-with col6:
-    st.metric("Dec Rank", f"#{int(december_rank)}" if december_rank > 0 else "N/A")
 
 st.divider()
 
